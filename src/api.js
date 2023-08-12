@@ -2,6 +2,9 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 
+const usersRouter = require("./routes/users/user.routes")
+const authRouter = require("./routes/auth/auth.routes")
+
 const api = express()
 
 api.use(
@@ -13,5 +16,8 @@ api.use(
 
 api.use(bodyParser.json())
 api.use(bodyParser.urlencoded({extended: true}))
+
+api.use("/users", usersRouter)
+api.use("/auth", authRouter)
 
 module.exports = api
